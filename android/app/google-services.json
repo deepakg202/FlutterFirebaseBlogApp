@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "546681380162",
+    "firebase_url": "https://udgamblog.firebaseio.com",
+    "project_id": "udgamblog",
+    "storage_bucket": "udgamblog.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546681380162:android:ced2a393527197726dbcdb",
+        "android_client_info": {
+          "package_name": "in.ac.nitsikkim.udgam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546681380162-d5e7a88a2bjh1nkpm62u18dlk39v1g6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXrNcg31Se2RMAk8X02RANrgwfJrXbEAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546681380162-d5e7a88a2bjh1nkpm62u18dlk39v1g6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
