@@ -34,7 +34,7 @@ class BlogData extends StatelessWidget {
           decoration: BoxDecoration(
               border: Border.all(width: 0, color: Colors.white),
               color: Colors.white),
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 3),
+          margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
           child: Column(
             children: <Widget>[
               ListTile(
@@ -58,12 +58,13 @@ class BlogData extends StatelessWidget {
                 )
               ),
               Container(
+                decoration: BoxDecoration(border: Border.all(width: 0.2, color: Colors.black)),
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: GestureDetector(
                   child: CachedNetworkImage(
                     imageUrl: snapshot.value['imglink'],
-                    placeholder: (context, url) => Image.asset('assets/images/loader.gif'),
-                    errorWidget: (context, url, error) => Container(child: Icon(Icons.error)),
+                    placeholder: (context, url) => Container(child: Image.asset('assets/images/loader.gif'), height: 500),
+                    errorWidget: (context, url, error) => Container(child: Icon(Icons.error), height: 500),
                   ),
                   onDoubleTap: () {
                     Navigator.push(

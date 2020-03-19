@@ -80,7 +80,7 @@ class _BlogState extends State<Blog> {
 
               child: FirebaseAnimatedList(
                 controller: _scrollController,
-                sort: (a, b) => b.key.compareTo(a.key),
+                sort: (a, b) => b.value['date'].compareTo(a.value['date']),
                 defaultChild: Center(
                   child: Container(
                     width: 20.0,
@@ -91,8 +91,8 @@ class _BlogState extends State<Blog> {
                 ),
 
                 query:
-                    _database.reference().child(postsNode).orderByKey(),
-                itemBuilder: (_, DataSnapshot snap, Animation<double> animation,
+                    _database.reference().child(postsNode).orderByChild('date'),
+                itemBuilder: (BuildContext context, DataSnapshot snap, Animation<double> animation,
                     int index) {
                   return new BlogData(snap, widget.userId);
                   //End of returning all the posts

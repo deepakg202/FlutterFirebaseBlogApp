@@ -36,6 +36,7 @@ class _LikeButtonState extends State<LikeButton>{
   getLikestatus() async{
       bool stat = (await FirebaseDatabase.instance.reference().child('posts/${widget.pid}/likers/${widget.uid}').once()).value;
     
+    if(this.mounted){
       if(stat==true)
       {
         setState(() {
@@ -47,11 +48,12 @@ class _LikeButtonState extends State<LikeButton>{
         });
       }
     }
+  }
 
 
     likenos() async {
       var nos = (await FirebaseDatabase.instance.reference().child('posts/${widget.pid}/likers/').once());
-    
+      if(this.mounted){
       setState(() {
         if(nos.value == null)
         {
@@ -65,16 +67,18 @@ class _LikeButtonState extends State<LikeButton>{
        
       });
     }
+    }
 
-  
   void initState()
   {
     super.initState();
-    
+
     getLikestatus();
     likenos();
   
   }
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +88,7 @@ class _LikeButtonState extends State<LikeButton>{
       children: <Widget>[
         IconButton(
           
-          icon: _liked?Icon(Icons.favorite, color: Colors.red):Icon(Icons.favorite_border, color: Colors.red),
+          icon: _liked?Icon(Icons.star_border, color: Colors.red):Icon(Icons.stars, color: Colors.red),
           onPressed: () {
             
 
@@ -101,15 +105,17 @@ class _LikeButtonState extends State<LikeButton>{
           },
         ),
 
-        RaisedButton(
-          child: Text(_likes.toString()),
-          onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => new LikesDialog(_likers)),
-              );
-          },
+        ClipOval(
+                  child: RaisedButton(
+            child: Text(_likes.toString()),
+            onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => new LikesDialog(_likers)),
+                );
+            },
+          ),
         ),
       ],
     );
@@ -158,7 +164,7 @@ class _LikesDialogState extends State<LikesDialog> {
 
 class LikerName extends StatefulWidget
 {
-  String ukey;
+  final String ukey;
   LikerName(this.ukey);
 
   @override
